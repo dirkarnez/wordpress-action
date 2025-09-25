@@ -5,7 +5,7 @@ services:
     stdin_open: true # docker run -i
     tty: true        # docker run -t
     depends_on:
-      - mysqldb
+      - db
     ports:
       - 8080:80
     environment:
@@ -20,7 +20,6 @@ services:
     #   - wordpress:/var/www/html
   db:
     image: mysql:8.0
-    container_name: mysqldb
     restart: always
     ports:
       - 3306:3306
