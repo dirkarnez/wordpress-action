@@ -2,6 +2,11 @@ wordpress-action
 ================
 ### TODOs
 - [ ] Fix proxying issue cause database failed to connect
+  - potential fix
+    ```bash
+    wp config set WP_SITEURL "???" --raw --type=constant
+    wp config set WP_HOME "???" --raw --type=constant
+    ```
 
 ### DevTunnel
 - See [dirkarnez/devtunnel-playground](https://github.com/dirkarnez/devtunnel-playground)
