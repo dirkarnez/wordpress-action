@@ -1,16 +1,29 @@
 services:
-  stirling-pdf:
-    image: docker.stirlingpdf.com/stirlingtools/stirling-pdf:latest
+  wordpress:
+    image: wordpress:latest
+    restart: always
     stdin_open: true # docker run -i
     tty: true        # docker run -t
     ports:
-      - '8080:8080'
-    volumes:
-      - ./StirlingPDF/trainingData:/usr/share/tessdata # Required for extra OCR languages
-      - ./StirlingPDF/extraConfigs:/configs
-      - ./StirlingPDF/customFiles:/customFiles/
-      - ./StirlingPDF/logs:/logs/
-      - ./StirlingPDF/pipeline:/pipeline/
+      - 8080:80
     environment:
-      - DISABLE_ADDITIONAL_FEATURES=false
-      - LANGS=en_GB
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_NAME: exampledb
+    # volumes:
+    #   - wordpress:/var/www/html
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+#     volumes:
+#       - db:/var/lib/mysql
+
+# volumes:
+#   wordpress:
+#   db:
