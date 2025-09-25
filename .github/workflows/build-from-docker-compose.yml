@@ -29,10 +29,20 @@ jobs:
           
       - run: |
           npm i -g concurrently
+
+      # - run: |
+      #     concurrently "./devtunnel host -p 8080 --allow-anonymous --protocol auto" "docker compose up --build"
+          
+      - uses: fastai/workflows/ssh@master
+        with:
+          ssh_key: ${{ secrets.SSH_KEY }}
+          key_file: id_ecdsa
+  #     - uses: actions/checkout@v2
+  #     - run: source script-linux.sh
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@master
       
-      - run: |
-          concurrently "./devtunnel host -p 8080 --allow-anonymous --protocol auto" "docker compose up --build"
-      
+
     # # continue-on-error: true
     #   - name: set permission and run
     #     run: |
