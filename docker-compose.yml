@@ -11,9 +11,9 @@ services:
       WORDPRESS_DB_USER: exampleuser
       WORDPRESS_DB_PASSWORD: examplepass
       WORDPRESS_DB_NAME: exampledb
-      # WORDPRESS_CONFIG_EXTRA: |
-      #   define('WP_HOME','http://.co.uk/blog');
-      #   define('WP_SITEURL','http://.co.uk/blog');
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_HOME','/');
+        define('WP_SITEURL','/');
     # volumes:
     #   - wordpress:/var/www/html
   db:
