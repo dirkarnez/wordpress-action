@@ -1,5 +1,7 @@
 wordpress-action
 ================
+### TODOs
+- [ ] Fix proxying issue cause database failed to connect
 
 ### DevTunnel
 - See [dirkarnez/devtunnel-playground](https://github.com/dirkarnez/devtunnel-playground)
