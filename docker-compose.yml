@@ -4,6 +4,8 @@ services:
     restart: always
     stdin_open: true # docker run -i
     tty: true        # docker run -t
+    depends_on:
+      - mysqldb
     ports:
       - 8080:80
     environment:
@@ -13,12 +15,12 @@ services:
       WORDPRESS_DB_NAME: exampledb
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_SITEURL','/');
-        define('DB_HOST', 'db');
       # define('WP_HOME','/');
     # volumes:
     #   - wordpress:/var/www/html
   db:
     image: mysql:8.0
+    container_name: mysqldb
     restart: always
     ports:
       - 3306:3306
@@ -27,6 +29,11 @@ services:
       MYSQL_USER: exampleuser
       MYSQL_PASSWORD: examplepass
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
+
+
+
+
+      
 #     volumes:
 #       - db:/var/lib/mysql
 
